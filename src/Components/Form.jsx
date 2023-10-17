@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-const Form = () => {
+import { nanoid } from "nanoid";
+const Form = ({ addItem }) => {
   const [item, setItem] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -9,6 +9,8 @@ const Form = () => {
       console.log("no item");
       return;
     }
+    const newItem = { name: item, completed: false, id: nanoid() };
+    addItem(newItem);
   };
   return (
     <section className="section-center">
