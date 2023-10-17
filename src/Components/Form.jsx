@@ -11,9 +11,10 @@ const Form = ({ addItem }) => {
     }
     const newItem = { name: item, completed: false, id: nanoid() };
     addItem(newItem);
+    setItem("");
   };
   return (
-    <section className="section-center">
+    <section>
       <form onSubmit={handleSubmit}>
         <h4>Grocery Bud</h4>
         <div className="form-control">
