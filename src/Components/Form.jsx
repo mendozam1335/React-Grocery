@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
-const Form = ({ addItem }) => {
+const Form = ({ addItem, toast }) => {
   const [item, setItem] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!item) {
-      console.log("no item");
+      toast.error("Cannot have empty item");
       return;
     }
     const newItem = { name: item, completed: false, id: nanoid() };
