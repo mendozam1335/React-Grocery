@@ -3,8 +3,14 @@ import Form from "./Components/Form";
 import Items from "./Components/Items";
 import { ToastContainer, toast } from "react-toastify";
 
+const updateStorage = (updatedItems) => {
+  localStorage.setItem("items", JSON.stringify(updatedItems));
+};
+
+const defaultList = JSON.parse(localStorage.getItem("items")) || [];
+
 const App = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(defaultList);
 
   const addItem = (item) => {
     setItems((oldItems) => {
@@ -12,7 +18,7 @@ const App = () => {
       updateStorage(updatedItems);
       return updatedItems;
     });
-    toast.success("Item added");
+    //toast.success("Item added");
   };
   const removeItem = (id) => {
     setItems((oldItems) => {
@@ -33,13 +39,6 @@ const App = () => {
     setItems(newItems);
     updateStorage(newItems);
   };
-  const updateStorage = (updatedItems) => {
-    localStorage.setItem("items", JSON.stringify(updatedItems));
-  };
-
-  useEffect(() => {
-    setItems(JSON.parse(localStorage.getItem("items")) || []);
-  }, []);
 
   return (
     <main>
