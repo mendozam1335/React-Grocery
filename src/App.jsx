@@ -47,7 +47,7 @@ const App = () => {
         <Form addItem={addItem} toast={toast} />
         <Items items={items} removeItem={removeItem} editItem={editItem} />
       </section>
-      <ToastContainer />
+      <ToastContainer position="top-center" />
     </main>
   );
 };
